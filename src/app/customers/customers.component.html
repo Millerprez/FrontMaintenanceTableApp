@@ -1,0 +1,375 @@
+<div class="container">
+    <h1>Administrar tabla: tcus_clientes</h1>
+    <hr>
+    <form>
+        <div class="row">
+            <div class="col-4">
+                <input type="number" (change)="cleanForm()" class="form-control" placeholder="Ingrese ID del Cliente" [(ngModel)]="idInput" name="idInput" >
+            </div>
+            <div class="col-4">
+                <button class="btn btn-large btn-primary"  type="submit" name="btn-buscar" (click)="getCustomer()"  >Buscar</button>    
+                |
+                <button class="btn btn-primary" [disabled]="disablebtnUpdate" (click)="updateCustomer()" >Actualizar</button>    
+            </div>
+            
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Identificación</label>
+                    <input type="number" class="form-control" [(ngModel)]="identificacion"  name="identificacion">
+                </div>   
+            </div> 
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Nombres</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombres"  name="nombres">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Apellidos</label>
+                    <input type="text" class="form-control" [(ngModel)]="apellidos"  name="apellidos" >
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Dirección</label>
+                    <input type="text" class="form-control" [(ngModel)]="direccion"  name="direccion" >
+                </div>   
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Correo</label>
+                    <input type="email" class="form-control" [(ngModel)]="correo"  name="correo" >
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Teléfono</label>
+                    <input type="number" class="form-control" [(ngModel)]="telefono"  name="telefono">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Teléfono Alternativo</label>
+                    <input type="number" class="form-control" [(ngModel)]="telefonoAlt"  name="telefonoAlt">
+                </div>   
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Celular</label>
+                    <input type="number" class="form-control" [(ngModel)]="celular"  name="celular">
+                </div>
+            </div>
+            
+            <div class="col">
+                <div class="form-group">
+                    <br>
+                    <div class="input-group">
+                        <div class="col-2">
+                            <label for="cargo">Cargo</label>
+                        </div>
+                        <input type="input" disabled="true" class="form-control" name="cargo" placeholder="Seleccione un cargo" value="{{cargo}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop" >agregar</button>    
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col"> 
+                <div class="form-gruop">
+                    <br>
+                    <div class="input-group">
+                        <div class="col-3">
+                            <label for="cargo">Ciudades</label>
+                        </div>
+                        <input type="input" disabled="true" class="form-control" name="ciudad" placeholder="Seleccione un cargo" value="{{ciudad}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop2" >agregar</button>    
+                    </div> 
+                </div>   
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Fecha de nacimiento</label>
+                    <input type="date" value="{{fechaNacimiento}}" class="form-control" [(ngModel)]="fechaNacimiento"  name="fechaNacimiento">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Género</label>
+                        <select id="" class="form-control" name="genero" [(ngModel)]="genero">
+                                    <option value="m">M</option>
+                                    <option value="f">F</option>
+                        </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-gruop">
+                    <br>
+                    <div class="input-group">
+                        <div class="col-3">
+                            <label for="cargo">Comunidad</label>
+                        </div>
+                        <input type="input" disabled="true" class="form-control" name="comunidad" placeholder="Seleccione una comunidad" value="{{comunidad}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop4" >agregar</button>    
+                    </div>
+                </div>   
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <label for="">Nombre Empresa</label>
+                    <input type="text" class="form-control" [(ngModel)]="nombreEmpresa"  name="nombreEmpresa">
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-gruop">
+                    <br>
+                    <div class="input-group">
+                        <div class="col-2">
+                            <label for="division">División</label>
+                        </div>
+                        <input type="input" disabled="true" class="form-control" name="division" placeholder="Seleccione una división" value="{{division}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop5" >agregar</button>    
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <div class="form-gruop">
+                    <br>
+                    <div class="input-group">
+                        <div class="col-3">
+                            <label for="pais">Paises</label>
+                        </div>
+                        <input type="input" disabled="true" class="form-control" name="pais" placeholder="Seleccione un país" value="{{pais}}">
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop3" >agregar</button>    
+                    </div> 
+                </div>   
+            </div>
+            <div class="col">
+                <div class="form-gruop"> 
+                    <label for="">Hobbies</label>
+                    <input type="textarea" class="form-control" [(ngModel)]="hobbies"  name="pais">
+                </div>
+            </div>
+            <div class="col">
+                <br>
+                <div class="row">
+                    <button class="btn btn-primary" [disabled]="disablebtnSave" (click)="saveCustomer()" >Guardar</button>    
+                </div>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+<!-- modals -->
+
+    <!-- modal cargos -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Cargos</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="row">
+                            <div class="col">
+                                <h3>Agregar un Cargo</h3>
+                                <form >
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <input type="text" class="form-control" placeholder="Cargo" name="cargoInput" [(ngModel)]="cargoInput">
+                                        </div>
+                                        <div class="col-6">
+                                            <button class="btn btn-primary" (click)="savePosition()">Guardar</button>
+                                        </div>
+                                        
+                                    </div>
+                                    
+                                </form>
+
+                                <hr>
+                                <h3>Selecionar un cargo</h3>
+                                <select name="listCargos" id="" [(ngModel)]="cargosInput" (change)="loadPositionUp()" >
+                                    <option [value]="cargos.indexOf(item)" (click)="insertCargo(cargos.indexOf(item))" *ngFor="let item of cargos">{{item.namePosition}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Seleccionar Cargo</button>
+                </div>
+            </div>
+            </div>
+        </div>
+    <!-- fin modal cargos -->
+
+    <!-- modal ciudades -->
+    <div class="modal fade" id="staticBackdrop2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Ciudades</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Selecione una ciudad</h3>
+                            <form >
+                                <div class="row">
+                                    <select name="listCities" id="" [(ngModel)]="ciudadesInput" (change)="loadCitiesUp()" >
+                                        <option [value]="ciudades.indexOf(ciudad)" (click)="insertCiudad(ciudades.indexOf(ciudad))" *ngFor="let ciudad of ciudades">{{ciudad.municipio}}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Seleccionar Ciudad</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- fin  modal ciudades -->
+
+    <!-- modal paises -->
+    <div class="modal fade" id="staticBackdrop3" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Paises</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Selecione un pais</h3>
+                            <form >
+                                <div class="row">
+                                    <select name="listCountries" id="" [(ngModel)]="paisesInput" (change)="loadContriesUp()" >
+                                        <option [value]="paises.indexOf(pais)" (click)="insertPais(paises.indexOf(pais))" *ngFor="let pais of paises">{{pais.name}}</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Seleccionar País</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- fin modal paises -->
+
+    <!-- modal comunidades -->
+    <div class="modal fade" id="staticBackdrop4" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Comunidades</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Agregar una comunidad</h3>
+                            <form >
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="Comunidad" name="comunidadInput" [(ngModel)]="comunidadInput">
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-primary" (click)="saveCommunity()">Guardar</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </form>
+
+                            <hr>
+                            <h3>Selecionar una comunidad</h3>
+                            <select name="listComunidades" id="" [(ngModel)]="comunidadesInput" (change)="loadCommunitiesUp()" >
+                                <option [value]="comunidades.indexOf(comu)" (click)="insertComunidad(comunidades.indexOf(comu))" *ngFor="let comu of comunidades">{{comu.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" >Seleccionar Cargo</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- fin modal comunidades -->
+
+    <!-- modal Divisiones -->
+    <div class="modal fade" id="staticBackdrop5" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Divisiones</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="row">
+                        <div class="col">
+                            <h3>Agregar una división</h3>
+                            <form >
+                                <div class="row">
+                                    <div class="col-6">
+                                        <input type="text" class="form-control" placeholder="División" name="divisionInput" [(ngModel)]="divisionInput">
+                                    </div>
+                                    <div class="col-6">
+                                        <button class="btn btn-primary" (click)="saveDivision()">Guardar</button>
+                                    </div>
+                                    
+                                </div>
+                                
+                            </form>
+
+                            <hr>
+                            <h3>Selecionar una división</h3>
+                            <select name="listDivisiones" id="" [(ngModel)]="divisionesInput" (change)="loadDivisionsUp()" >
+                                <option [value]="divisiones.indexOf(division)" (click)="insertDivision(divisiones.indexOf(division))" *ngFor="let division of divisiones">{{division.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+            
+            <button type="button"  class="btn btn-primary" data-bs-dismiss="modal" >Seleccionar Cargo</button>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- fin modal divisiones -->
+
+<!-- fin modals -->
